@@ -1,36 +1,4 @@
-# Documentation des Configurations Réseau
-
-Cette documentation couvre les configurations pour plusieurs services réseau essentiels, notamment DNS, DHCP, SSH, FTP et la configuration d'une adresse IP statique. Voici un résumé de chaque section :
-
----
-
-## 1. **Configuration DNS avec BIND9**
-Cette section explique comment installer et configurer un serveur DNS avec **BIND9**. Elle inclut la création de zones DNS, la configuration des enregistrements NS et A, ainsi que la configuration des options de BIND9.
-
-- **Points clés :**
-  - Installation de BIND9 : `sudo apt install bind9 -y`
-  - Configuration des zones DNS dans `/etc/bind/zones/db.ftp.com`.
-  - Configuration des options DNS dans `/etc/bind/named.conf.options`.
-  - Redémarrage du service : `sudo systemctl restart bind9`
-
----
-
-## 2. **Configuration d'une Adresse IP Statique**
-Cette section montre comment configurer une **adresse IP statique** sur une interface réseau. Cela est utile pour les serveurs qui nécessitent une IP fixe.
-
-- **Points clés :**
-  - Configuration de l'interface réseau dans `/etc/network/interfaces`.
-  - Exemple de configuration :
-    ```bash
-    auto ens33
-    iface ens33 inet static
-    address 172.16.0.10
-    netmask 255.255.0.0
-    ```
-
----
-
-## 3. **Configuration DHCP avec Kea DHCP**
+## 1. **Configuration DHCP avec Kea DHCP**
 Cette section explique comment installer et configurer un serveur **DHCP** avec **Kea DHCP**. Elle inclut la configuration des sous-réseaux, des pools d'adresses IP et des options DHCP.
 
 - **Points clés :**
@@ -50,7 +18,7 @@ Cette section explique comment installer et configurer un serveur **DHCP** avec 
 
 ---
 
-## 4. **Configuration SSH avec OpenSSH**
+## 2. **Configuration SSH avec OpenSSH** 
 Cette section explique comment installer et configurer un serveur **SSH** sécurisé avec **OpenSSH**. Elle inclut des options pour restreindre l'accès, changer le port SSH et interdire les connexions root.
 
 - **Points clés :**
@@ -63,7 +31,7 @@ Cette section explique comment installer et configurer un serveur **SSH** sécur
 
 ---
 
-## 5. **Configuration FTP avec vsftpd**
+## 3. **Configuration FTP avec vsftpd** 
 Cette section explique comment installer et configurer un serveur **FTP** sécurisé avec **vsftpd**. Elle inclut des options pour restreindre l'accès anonyme, configurer les permissions des fichiers et limiter les connexions.
 
 - **Points clés :**
@@ -73,3 +41,31 @@ Cette section explique comment installer et configurer un serveur **FTP** sécur
     - Restriction des utilisateurs : `chroot_local_user=YES`
     - Limitation des connexions : `max_per_ip=10`, `max_clients=20`
   - Redémarrage du service : `sudo systemctl restart vsftpd`
+
+---
+
+## 4. **Configuration DNS avec BIND9**
+Cette section explique comment installer et configurer un serveur DNS avec **BIND9**. Elle inclut la création de zones DNS, la configuration des enregistrements NS et A, ainsi que la configuration des options DNS.
+
+- **Points clés :**
+  - Installation de BIND9 : `sudo apt install bind9 -y`
+  - Configuration des zones DNS dans `/etc/bind/zones/db.ftp.com`.
+  - Configuration des options DNS dans `/etc/bind/named.conf.options`.
+  - Redémarrage du service : `sudo systemctl restart bind9`
+
+---
+
+## 5. **Configuration d'une Adresse IP Statique**
+Cette section montre comment configurer une **adresse IP statique** sur une interface réseau. Cela est utile pour les serveurs qui nécessitent une IP fixe.
+
+- **Points clés :**
+  - Configuration de l'interface réseau dans `/etc/network/interfaces`.
+  - Exemple de configuration :
+    ```bash
+    auto ens33
+    iface ens33 inet static
+    address 172.16.0.10
+    netmask 255.255.0.0
+    ```
+
+---
